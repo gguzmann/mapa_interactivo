@@ -21,7 +21,8 @@ export function StoreProvider({ children }) {
         maxZoom: 0,
         minZoom: 0,
         canMove: true,
-        title: ''
+        title: '',
+        layer: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
     })
 
     const deleteData = (index) => {
