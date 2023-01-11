@@ -1,11 +1,12 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Marker, Popup, useMapEvents } from 'react-leaflet'
 import { storeContext } from '../../context/storeContext'
 
 export const EventActions = () => {
 
-    const { current, setCurrent, tool, data, setData } = useContext(storeContext)
+    const { current, setCurrent, tool, data, setData, setMap } = useContext(storeContext)
 
+    
     const map = useMapEvents({
         mousemove(e) {
             // console.log(e.latlng)
@@ -33,5 +34,9 @@ export const EventActions = () => {
 
         }
     })
+    useEffect(() => {
+        setMap(map)
+    }, [map])
+    
 
 }

@@ -6,6 +6,7 @@ export const useStore = () => useContext(storeContext)
 
 export function StoreProvider({ children }) {
 
+    const [map, setMap] = useState(null)
     const [current, setCurrent] = useState({
         color: '#bf1f0d',
         position: []
@@ -23,12 +24,12 @@ export function StoreProvider({ children }) {
         title: ''
     })
 
-    const addData = (item) => {
+    const addData = (item, coords) => {
         setData([
             ...data,
             {
                 text: 'asd',
-                coords: [],
+                coords,
                 item
             }
             ])
@@ -40,7 +41,7 @@ export function StoreProvider({ children }) {
             setTool('')
     }
     return (
-        <storeContext.Provider value={{ data, setData, tool, setTool, configMap, setConfigMap, current, setCurrent, addData }}>
+        <storeContext.Provider value={{ data, setData, tool, setTool, configMap, setConfigMap, current, setCurrent, addData, map, setMap }}>
             {children}
         </storeContext.Provider>
     )

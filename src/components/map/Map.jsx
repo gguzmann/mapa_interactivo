@@ -1,21 +1,32 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { MapContainer, Marker, Polyline, Popup, TileLayer, Polygon } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { storeContext } from '../../context/storeContext'
 import { EventActions } from './EventActions'
 import { ButtonFloat } from './ButtonFloat'
+import { iconLocation } from '../../helpers/icons'
 
 export const Map = () => {
-    const { current, setCurrent, data, setTool } = useContext(storeContext)
+    const { current, data } = useContext(storeContext)
+    
+    const mapRef = useRef()
+    useEffect(() => {
+        // const {leafletElement: map} = mapRef.current;
+        // setTimeout(() => {
+        //     map.flyTo([-45.5712, -72.0685],2)
+            
+        // }, 1000);
+    }, [mapRef])
+    
 
     return (
         <>
-            <MapContainer className="map" center={[-45.5712, -72.0685]} zoom={14} scrollWheelZoom={true} zoomControl={false}>
+            <MapContainer className="map" center={[-45.5712, -72.0685]} zoom={14} scrollWheelZoom={true} zoomControl={false} ref={mapRef}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                 />
-                <Marker position={[51.505, -0.09]}>
+                <Marker icon={iconLocation} position={[51.505, -0.09]}>
                     <Popup>
                         A pretty CSS3 popup. <br /> Easily customizable.
                     </Popup>
@@ -26,7 +37,7 @@ export const Map = () => {
                         <Polyline pathOptions={{ color: current.color }} positions={current.position} />
                         :
                         (current.item == 'location' ?
-                            <Marker key={Date.now()} position={current.position[0]}>
+                            <Marker icon={iconLocation} key={Date.now()} position={current.position[0]}>
                                 <Popup>
                                     {/* A pretty CSS3 popup. <br /> Easily customizable. */}
                                 </Popup>
@@ -45,6 +56,11 @@ export const Map = () => {
                 current.position.length > 0 &&
                 <ButtonFloat />
             }
+            {/* <button className='btn btn-primary' onClick={() => {
+                const {current} = mapRef
+                const {leafletElement: mapa} = current
+                mapa.flyTo([-45.5712, -72.0685],2)
+            }}>Fly yo</button>  */}
         </>
 
     )

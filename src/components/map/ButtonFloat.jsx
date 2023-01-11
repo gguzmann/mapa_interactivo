@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Marker, Polygon, Polyline, Popup } from 'react-leaflet'
 import { storeContext } from '../../context/storeContext'
+import { iconLocation } from '../../helpers/icons'
 
 export const ButtonFloat = () => {
 
@@ -17,9 +18,9 @@ export const ButtonFloat = () => {
     }
 
     const handleSave = () => {
-        if (tool == 'poly') addData(<Polygon key={Date.now()} pathOptions={{ color: current.color }} positions={current.position} />)
-        if (tool == 'line') addData(<Polyline key={Date.now()} pathOptions={{ color: current.color }} positions={current.position} />)
-        if (tool == 'location') addData(<Marker key={Date.now()} position={current.position[0]}></Marker>)
+        if (tool == 'poly') addData(<Polygon key={Date.now()} pathOptions={{ color: current.color }} positions={current.position} />, current.position[0], 'poly')
+        if (tool == 'line') addData(<Polyline key={Date.now()} pathOptions={{ color: current.color }} positions={current.position} />, current.position[0], 'line')
+        if (tool == 'location') addData(<Marker key={Date.now()} icon={iconLocation} position={current.position[0]}></Marker>, current.position[0], 'location')
 
     }
 

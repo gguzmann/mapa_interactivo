@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { storeContext } from '../../context/storeContext'
+import { Item } from './Item'
 
 export const Points = () => {
 
@@ -12,16 +13,7 @@ export const Points = () => {
             </div>
             <div className="list-group">
                 {
-                    data.map((x, i) =>
-                        <div key={i} type="div" className="list-group-item list-group-item-action">
-                            {/* explicabo illo est libero  */}
-                            <div className="d-flex w-100 justify-content-between">
-                                <h5 className="mb-1">List group item heading</h5>
-                                <small>3 days ago</small>
-                            </div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi a sunt unde
-                        </div>
-                    )
+                    data.map((x, i) => <Item key={i} item={x}/> )
 
                 }
             </div>
