@@ -13,7 +13,7 @@ export const Points = () => {
             </div>
             <div className="list-group">
                 {
-                    data.map((x, i) => <Item key={i} item={x}/> )
+                    data.map((x, i) => <Item key={i} item={x} index={i}/> )
 
                 }
             </div>

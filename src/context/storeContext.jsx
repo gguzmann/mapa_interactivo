@@ -24,13 +24,20 @@ export function StoreProvider({ children }) {
         title: ''
     })
 
+    const deleteData = (index) => {
+        const newData = data.filter((x,i) => i != index)
+        setData(newData)
+    }
+
     const addData = (item, coords) => {
         setData([
             ...data,
             {
                 text: 'asd',
                 coords,
-                item
+                item,
+                title: 'Header',
+                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi a sunt unde.'
             }
             ])
             setCurrent({
@@ -40,8 +47,20 @@ export function StoreProvider({ children }) {
             })
             setTool('')
     }
+
+    const editData = (index, object) => {
+        const editObject = data.map((x,i) => {
+            if(index == i){
+                return {...x, title:object.title, description: object.description}
+            }else {
+                return x
+            }
+        })
+        setData(editObject)
+        console.log(data)
+    }
     return (
-        <storeContext.Provider value={{ data, setData, tool, setTool, configMap, setConfigMap, current, setCurrent, addData, map, setMap }}>
+        <storeContext.Provider value={{ data, setData, tool, setTool, configMap, setConfigMap, current, setCurrent, addData, map, setMap, deleteData, editData }}>
             {children}
         </storeContext.Provider>
     )

@@ -3,6 +3,8 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 export const iconLocation = L.icon({
     iconUrl: markerIcon,
     iconRetinaUrl: markerIcon,
+    iconAnchor: [12, 45],
+    popupAnchor: [10, -44],
 })
 
 
