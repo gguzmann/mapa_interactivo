@@ -36,8 +36,8 @@ export function StoreProvider({ children }) {
                 text: 'asd',
                 coords,
                 item,
-                title: 'Header',
-                description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi a sunt unde.'
+                title: 'Title',
+                description: 'Description.'
             }
             ])
             setCurrent({
@@ -49,15 +49,8 @@ export function StoreProvider({ children }) {
     }
 
     const editData = (index, object) => {
-        const editObject = data.map((x,i) => {
-            if(index == i){
-                return {...x, title:object.title, description: object.description}
-            }else {
-                return x
-            }
-        })
+        const editObject = data.map((x,i) => (index == i ? {...x, title:object.title, description: object.description} : x))
         setData(editObject)
-        console.log(data)
     }
     return (
         <storeContext.Provider value={{ data, setData, tool, setTool, configMap, setConfigMap, current, setCurrent, addData, map, setMap, deleteData, editData }}>

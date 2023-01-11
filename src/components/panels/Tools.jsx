@@ -21,16 +21,16 @@ export const Tools = () => {
         <input type="color" name="colorTool" id="colorTool" value={'#bf1f0d'} onChange={(e) => setCurrent({ ...current, color: e.target.value })} hidden />
       </div>
       <div className='d-flex justify-content-center mt-1'>
-        <button className={`btn btn-outline-primary w-75 d-flex justify-content-center  ${tool == 'layer' && 'active'}`} onClick={() => setTool('layer')} disabled><i className="fa-solid fa-layer-group"></i></button>
+        <button className={`btn btn-outline-secondary w-75 d-flex justify-content-center  ${tool == 'layer' && 'active'}`} onClick={() => setTool('layer')} disabled><i className="fa-solid fa-layer-group"></i></button>
       </div>
       <div className='d-flex justify-content-center mt-1'>
-        <button className={`btn btn-outline-primary w-75 d-flex justify-content-center ${tool == 'initialPos' && 'active'}`} onClick={() => setTool('initialPos')} ><i className="fa-solid fa-street-view"></i></button>
+        <button className={`btn btn-outline-secondary w-75 d-flex justify-content-center ${tool == 'initialPos' && 'active'}`} onClick={() => setTool('initialPos')} disabled><i className="fa-solid fa-street-view"></i></button>
       </div>
       <div className='d-flex justify-content-center mt-1'>
-        <button className={`btn btn-outline-primary w-75 d-flex justify-content-center ${tool == 'image' && 'active'}`} onClick={() => setTool('initialPos')} ><i className="fa-solid fa-image"></i></button>
+        <button className={`btn btn-outline-secondary w-75 d-flex justify-content-center ${tool == 'image' && 'active'}`} onClick={() => setTool('initialPos')} disabled><i className="fa-solid fa-image"></i></button>
       </div>
       <div className='d-flex justify-content-center mt-1'>
-        <button className={`btn btn-outline-primary w-75 d-flex justify-content-center ${tool == 'initialPos' && 'active'}`} onClick={() => setTool('initialPos')} disabled><i className="fa-solid fa-gear"></i></button>
+        <button className={`btn btn-outline-secondary w-75 d-flex justify-content-center ${tool == 'initialPos' && 'active'}`} onClick={() => setTool('initialPos')} disabled><i className="fa-solid fa-gear"></i></button>
       </div>
     </div>
   )

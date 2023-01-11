@@ -20,6 +20,7 @@ export const ModalEditItem = ({index, item}) => {
         e.preventDefault()
         console.log(value)
         editData(index, value)
+        handleClose()
     }
 
     const handleChange = (e) => {

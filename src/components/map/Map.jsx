@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext} from 'react'
 import { MapContainer, Marker, Polyline, Popup, TileLayer, Polygon } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { storeContext } from '../../context/storeContext'
@@ -8,20 +8,9 @@ import { iconLocation } from '../../helpers/icons'
 
 export const Map = () => {
     const { current, data } = useContext(storeContext)
-    
-    const mapRef = useRef()
-    useEffect(() => {
-        // const {leafletElement: map} = mapRef.current;
-        // setTimeout(() => {
-        //     map.flyTo([-45.5712, -72.0685],2)
-            
-        // }, 1000);
-    }, [mapRef])
-    
-
     return (
         <>
-            <MapContainer className="map" center={[-45.5712, -72.0685]} zoom={14} scrollWheelZoom={true} zoomControl={false} ref={mapRef}>
+            <MapContainer className="map" center={[-45.5712, -72.0685]} zoom={14} scrollWheelZoom={true} zoomControl={false} >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
@@ -56,11 +45,6 @@ export const Map = () => {
                 current.position.length > 0 &&
                 <ButtonFloat />
             }
-            {/* <button className='btn btn-primary' onClick={() => {
-                const {current} = mapRef
-                const {leafletElement: mapa} = current
-                mapa.flyTo([-45.5712, -72.0685],2)
-            }}>Fly yo</button>  */}
         </>
 
     )
