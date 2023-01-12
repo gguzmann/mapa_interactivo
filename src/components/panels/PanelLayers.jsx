@@ -15,8 +15,8 @@ export const PanelLayers = () => {
             <div className='overflow-scroll' style={{height: '100%'}}>
                 {
                     layersTile.map(x => (
-                        <div className='card p-2' style={{ width: '200px' }} onClick={() => setConfigMap({ ...configMap, layer: x.url })}>
-                            <MapContainer style={{ width: '100%', height: '100px' }} center={[-45.5712, -72.0685]} zoom={10} scrollWheelZoom={false} zoomControl={false} >
+                        <div className={`card p-2 ${configMap.layer == x.url && 'bg-primary'}`} style={{ width: '200px' }} onClick={() => setConfigMap({ ...configMap, layer: x.url })}>
+                            <MapContainer style={{ width: '100%', height: '100px' }} center={[-45.5712, -72.0685]} zoom={10} scrollWheelZoom={false} zoomControl={false} dragging={false} >
                                 <TileLayer
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                     url={x.url}

@@ -9,10 +9,16 @@ export const layersTile = [
 	{
 		url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
 	},{
-		url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+		url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png'
 	},{
 		url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
 	},{
 		url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
+	},{
+		url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+	},{
+		url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png'
+	},{
+		url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.png'
 	}
 ]
