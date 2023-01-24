@@ -4,16 +4,21 @@ import { storeContext } from '../../context/storeContext'
 
 export const EventActions = () => {
 
-    const { current, setCurrent, tool, data, setData, setMap } = useContext(storeContext)
+    const { current, setCurrent, tool, data, setData, setMap, setTool } = useContext(storeContext)
 
-    
+
     const map = useMapEvents({
         mousemove(e) {
-            // console.log(e.latlng)
+            
+            if (tool == 'image' && current.position.length > 0 && current.position.length < 3) {
+                let endPos = [current.position[0], e.latlng]
+                setCurrent({ ...current, position: endPos, item: 'image' })
+            }
         },
         click(e) {
             // console.log(e.latlng)
-            setCurrent({...current,
+            setCurrent({
+                ...current,
                 position: []
             })
             switch (tool) {
@@ -23,8 +28,13 @@ export const EventActions = () => {
                 case 'poly':
                     setCurrent({ ...current, position: [...current.position, e.latlng], item: 'poly' })
                     break;
-                    case 'location':
+                case 'location':
                     setCurrent({ ...current, position: [e.latlng], item: 'location' })
+                    break;
+                case 'image':
+                    if (current.position.length < 3) {
+                        setCurrent({ ...current, position: [...current.position, e.latlng], item: 'image' })
+                    }
                     break;
 
 
@@ -37,6 +47,6 @@ export const EventActions = () => {
     useEffect(() => {
         setMap(map)
     }, [map])
-    
+
 
 }

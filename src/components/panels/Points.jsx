@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { storeContext } from '../../context/storeContext'
+import { imageLayer } from '../../helpers/imageLayer'
 import { Item } from './Item'
+import { ModalSelectImages } from './ModalSelectImages'
 
 export const Points = () => {
 
@@ -12,6 +14,7 @@ export const Points = () => {
                 <h3>Puntos de interes</h3>
             </div>
             <div className="list-group">
+                {/* <ModalSelectImages/>                 */}
                 {
                     data.map((x, i) => <Item key={i} item={x} index={i}/> )
 

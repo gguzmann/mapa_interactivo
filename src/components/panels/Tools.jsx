@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { storeContext } from '../../context/storeContext'
-import { ModalLayers } from './ModalLayers'
+import { ModalSelectImages } from './ModalSelectImages'
+import { PanelContainer } from './PanelContainer'
 import { PanelLayers } from './PanelLayers'
 
 export const Tools = () => {
@@ -8,7 +9,7 @@ export const Tools = () => {
   const { tool, setTool, current, setCurrent, map } = useContext(storeContext)
 
   const handleClick = (tool) => {
-    setCurrent({...current, position: [], item: ''})
+    setCurrent({ ...current, position: [], item: '' })
     setTool(tool)
   }
 
@@ -40,14 +41,18 @@ export const Tools = () => {
         <button className={`btn btn-outline-secondary w-75 d-flex justify-content-center ${tool == 'initialPos' && 'active'}`} onClick={() => handleClick('initialPos')} disabled><i className="fa-solid fa-street-view"></i></button>
       </div>
       <div className='d-flex justify-content-center mt-1'>
-        <button className={`btn btn-outline-secondary w-75 d-flex justify-content-center ${tool == 'image' && 'active'}`} onClick={() => handleClick('initialPos')} disabled><i className="fa-solid fa-image"></i></button>
+        <button className={`btn btn-outline-primary w-75 d-flex justify-content-center ${tool == 'image' && 'active'}`} onClick={() => handleClick('image')}><i className="fa-solid fa-image"></i></button>
       </div>
       <div className='d-flex justify-content-center mt-1'>
         <button className={`btn btn-outline-secondary w-75 d-flex justify-content-center ${tool == 'initialPos' && 'active'}`} onClick={() => handleClick('initialPos')} disabled><i className="fa-solid fa-gear"></i></button>
       </div>
       {
         tool == 'layer' &&
-        <PanelLayers/>
+        <PanelLayers />
+      }
+      {
+        tool == 'image' &&
+        <ModalSelectImages />
       }
     </div>
   )
